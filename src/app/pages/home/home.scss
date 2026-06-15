@@ -1,0 +1,552 @@
+/* ============================================ */
+/* PAGE RECHERCHE MÉTEO - STYLES CSS   */
+/* ============================================ */
+
+.page {
+  height: auto !important;
+  min-height: 100vh;
+  position: relative;
+  background-image: url('/assets/images/bg.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  overflow-y: auto !important;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Écran de recherche : centré */
+.content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.content-result {
+  padding-bottom: 150px !important;  /* l'espace en bas */
+  position: relative;
+  z-index: 2;
+  height: auto;
+  min-height: 100vh;  
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  overflow-y: auto;
+  padding: 70px 90px 0px 90px;
+}
+
+.title {
+  color: white;
+  font-size: 48px;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.title:hover {
+  transform: rotate(2deg) scale(1.02);
+  text-shadow: 0 0 15px rgba(255,215,0,0.4);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 460px;
+  padding: 15px 15px;
+  border: 1px solid white;
+  border-radius: 15px;
+  background: rgba(128, 128, 128, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.icon {
+  color: white;
+  font-size: 25px;
+  user-select: none;
+  cursor: pointer;
+}
+
+.icon.left {
+  margin-right: 10px;
+}
+
+.icon.right {
+  margin-left: 10px;
+}
+
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 10;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+
+/* ============================================ */
+/*  CITY ET TEMPERATURE - STYLES CSS   */
+/* ============================================ */
+
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+  position: relative;  
+  min-height: 50px; 
+}
+
+.weather-grid {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+  width: 100%;
+ // flex: 1;
+}
+
+.weather-left {
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+}
+
+.weather-right {
+  flex: 1;
+  min-width: 200px;
+  text-align: left;
+}
+
+.city {
+  margin: 0 0 40px 0;
+  text-align: left;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+.location-icon {
+  font-size: 2rem;
+  color: white;
+}
+
+.temp {
+  font-size: 3.4rem;
+  font-weight: 380;
+  margin: 90px 0px 40px 40px;
+  color: white;
+}
+
+.desc {
+  text-transform: capitalize;
+  margin-bottom: 0;
+  color: white;
+  font-size: 3.5rem;
+  margin: 150px 0px 0px 40px;
+  opacity: 0.4;
+  line-height: 1.5; 
+}
+
+/* ============================================ */
+/*  TEXTE ET CARTE VENT/HUMIDITE - STYLES CSS   */
+/* ============================================ */
+
+
+.info-block {
+  margin: 40px 0px 0px 0px;
+  padding: 15px;
+  margin-bottom: 20px;
+  color: white;
+  font-size: 20px;
+  line-height: 1.5; 
+}
+
+.cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0px 0px 0px 0px;
+}
+
+.card {
+  flex: 1;
+  background: rgba(64, 64, 64, 0.3);
+  padding: 50px;
+  border-radius: 12px;
+  text-align: center;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: 0.3s;
+}
+
+.card-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  line-height: 1.5; 
+}
+
+.card-icon {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.card-title {
+  margin: 20px 0 0 0;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+
+/* ============================================ */
+/*  BARRE DE RECHERCHE - STYLES CSS   */
+/* ============================================ */
+
+.search-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(64, 64, 64, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 10;
+}
+
+.search-icon-circle .material-icons {
+  color: white;
+  font-size: 27px;
+}
+
+.search-icon-circle:hover {
+  background: rgba(64, 64, 64, 0.6);
+  transform: scale(1.05);
+}
+
+
+/* Barre de recherche au hover */
+.search-bar-hover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  pointer-events: auto;  /* Évite les problèmes de clic */
+}
+
+.search-bar-hover .search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid white;
+  border-radius: 40px;
+  background: rgba(64, 64, 64, 0.9);
+  backdrop-filter: blur(8px);
+}
+
+.search-bar-hover .search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: white;
+  font-size: 16px;
+}
+
+.search-bar-hover .search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.search-bar-hover .icon {
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+
+/* ============================================ */
+/* PREVISIONS 5 JOURS - STYLES CSS   */
+/* ============================================ */
+
+.forecast-section {
+  width: 100%;
+  margin-top: 180px;
+  padding: 40px 0;
+  position: relative;
+}
+
+.forecast-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  gap: 10px;
+  width: 100%;
+  min-height: 180px;
+}
+
+/* Ligne ondulée (vague) */
+.forecast-cards::before {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 60" preserveAspectRatio="none"><path d="M0,30 Q100,10 200,30 T400,30 T600,30 T800,30 T1000,30" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/></svg>');
+  background-repeat: no-repeat;
+  background-size: 100% 60px;
+  background-position: center;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.forecast-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  background: transparent;
+  border: none;
+  position: relative;
+  z-index: 1;
+  padding: 0;
+  cursor: pointer;
+  height: 130px;
+}
+
+/* Position des points selon leur position sur la vague */
+.forecast-card:nth-child(1)::before { bottom: 50px; }  /* Point bas (creux de vague) */
+.forecast-card:nth-child(2)::before { bottom: 25px; }  /* Point milieu montant */
+.forecast-card:nth-child(3)::before { bottom: 50px; }  /* Point haut (sommet) */
+.forecast-card:nth-child(4)::before { bottom: 30px; }  /* Point milieu descendant */
+.forecast-card:nth-child(5)::before { bottom: 50px; }  /* Point bas (creux) */
+
+/* Le point (cercle) */
+.forecast-card::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: white;
+  border: 3px solid white;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* Point sélectionné (actif) */
+.forecast-card.active::before {
+  width: 24px;
+  height: 24px;
+  background: white;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+  border: 3px solid white;
+}
+
+/* Ajuster la position verticale pour les points actifs */
+.forecast-card.active:nth-child(1)::before { bottom: 50px; }
+.forecast-card.active:nth-child(2)::before { bottom: 25px; }
+.forecast-card.active:nth-child(3)::before { bottom: 50px; }
+.forecast-card.active:nth-child(4)::before { bottom: 30px; }
+.forecast-card.active:nth-child(5)::before { bottom: 50px; }
+
+/* Température */
+.forecast-temp {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.2rem;
+  font-weight: 400;
+  transition: all 0.3s ease;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Ajuster la position de la température selon le point */
+.forecast-card:nth-child(1) .forecast-temp { margin-bottom: 90px; }
+.forecast-card:nth-child(2) .forecast-temp { margin-bottom: 90px; }
+.forecast-card:nth-child(3) .forecast-temp { margin-bottom: 90px; }
+.forecast-card:nth-child(4) .forecast-temp { margin-bottom: 90px; }
+.forecast-card:nth-child(5) .forecast-temp { margin-bottom: 90px; }
+
+.forecast-card.active .forecast-temp {
+  color: #FFD700;
+  font-size: 1.6rem;
+  font-weight: bold;
+  font-weight: 400;
+}
+
+/* Nom du jour */
+.forecast-day {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin-top: 5px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.forecast-card.active .forecast-day {
+  color: white;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Effet au survol */
+.forecast-card:hover::before {
+  transform: translateX(-50%) scale(1.3);
+  background: #FFA500;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+@media (max-width: 768px) {
+  .page {
+    overflow-y: auto !important;  /* Scroll sur la page entière */
+    height: auto !important;
+  }
+  .content-result {
+    height: 100vh !important;  /* Force la hauteur de l'écran */
+    overflow-y: auto !important;  /* Force le scroll */
+    padding-bottom: 100px !important;  
+  }
+  
+  .cards {
+    margin-bottom: 100px !important;  /* force l'espace en bas */
+  }
+  .search-box {
+    width: 80%;
+    padding: 12px 14px;
+  }
+
+  .weather-grid {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cards {
+    flex-direction: column;
+  }
+
+/* affichage des jours et température*/
+
+  .forecast-section {
+    margin-top: 100px;
+    padding: 20px 0;
+  }
+  
+  .forecast-cards {
+      width: 100vw;           /* Prend toute la largeur de l'écran */
+      margin-left: calc(-50vw + 50%);  /* Centre correctement */
+      padding: 0 10px;
+  }
+  
+  .forecast-cards::before {
+    height: 40px;
+    bottom: 15px;
+  }
+  
+  .forecast-card {
+    height: 110px;
+  }
+  
+  
+  /* Ajustements mobile pour les points */
+  .forecast-card:nth-child(1)::before { bottom: 38px; }
+  .forecast-card:nth-child(2)::before { bottom: 20px; }
+  .forecast-card:nth-child(3)::before { bottom: 38px; }
+  .forecast-card:nth-child(4)::before { bottom: 20px; }
+  .forecast-card:nth-child(5)::before { bottom: 38px; }
+  
+  .forecast-card.active:nth-child(1)::before { bottom: 38px; }
+  .forecast-card.active:nth-child(2)::before { bottom: 20px; }
+  .forecast-card.active:nth-child(3)::before { bottom: 38px; }
+  .forecast-card.active:nth-child(4)::before { bottom: 20px; }
+  .forecast-card.active:nth-child(5)::before { bottom: 38px; }
+  
+  .forecast-card::before {
+    width: 10px;
+    height: 10px;
+    border-width: 2px;
+  }
+  
+  .forecast-card.active::before {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .forecast-temp {
+    font-size: 0.9rem;
+  }
+  
+  .forecast-day {
+    font-size: 0.7rem;
+  }
+  
+  .forecast-card.active .forecast-temp {
+    font-size: 1.2rem;
+  }
+  
+  .forecast-card:nth-child(1) .forecast-temp { margin-bottom: 60px; }
+  .forecast-card:nth-child(2) .forecast-temp { margin-bottom: 60px; }
+  .forecast-card:nth-child(3) .forecast-temp { margin-bottom: 60px; }
+  .forecast-card:nth-child(4) .forecast-temp { margin-bottom: 60px; }
+  .forecast-card:nth-child(5) .forecast-temp { margin-bottom: 60px; }
+}

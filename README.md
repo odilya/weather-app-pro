@@ -1,3 +1,31 @@
+<div class="page">
+  <div class="content">
+    <!-- Barre de recherche toujours visible -->
+    <div class="search-box">
+      <input type="text" placeholder="Search city..." [(ngModel)]="city" (keyup.enter)="searchCity()" />
+      <button (click)="searchCity()">Search</button>
+    </div>
+
+    <!-- Loading -->
+    <div *ngIf="state === 'loading'">
+      <p>Chargement...</p>
+    </div>
+
+    <!-- Résultat -->
+    <div *ngIf="state === 'result' && weatherData">
+      <h2>{{ weatherData.name }}</h2>
+      <p>Température : {{ weatherData.main.temp }}°C</p>
+      <p>Humidité : {{ weatherData.main.humidity }}%</p>
+      <p>Vent : {{ weatherData.wind.speed }} km/h</p>
+      <p>{{ weatherData.weather[0].description }}</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 # WeatherAppPro
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.14.

@@ -1,2 +1,96 @@
-<h1>Weather App Pro</h1>
-<p>Application météo Angular</p>
+<div class="page">
+
+  <div class="overlay"></div>
+
+  <!-- ÉCRAN DE RECHERCHE -->
+  <div *ngIf="state === 'search'" class="content">
+    <h1 class="title">Horizon Weather</h1>
+
+    <div class="search-box">
+      <span class="icon left material-icons" (click)="searchCity()">search</span>
+      <input type="text" placeholder="Search any city, get instant weather..." [(ngModel)]="city" (keyup.enter)="searchCity()" />
+      <span class="icon right material-icons" (click)="city=''">close</span>
+    </div>
+  </div>
+
+  <!-- ÉCRAN RÉSULTAT -->
+  <div *ngIf="state === 'result' && weatherData" class="content-result">
+    <div class="top-bar">
+      <div class="search-hover-container" 
+            (mouseenter)="showSearchBar = true" 
+            (mouseleave)="showSearchBar = false">
+        
+        <div class="search-icon-circle" *ngIf="!showSearchBar">
+          <span class="material-icons">search</span>
+        </div>
+        
+        <div class="search-bar-hover" *ngIf="showSearchBar" [@slideAnimation]>
+          <div class="search-box">
+            <span class="icon left material-icons" (click)="searchFromHover()">search</span>
+            <input 
+                type="text" 
+                placeholder="Search another city..." 
+                [(ngModel)]="hoverCity"
+                (keyup.enter)="searchFromHover()"
+                autofocus
+            />
+            <span class="icon right material-icons" (click)="closeSearchBar()">close</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <div class="weather-grid" *ngIf="weatherData">
+      <div class="weather-left">
+        <h2 class="city">
+             <span class="material-icons location-icon">location_on</span>
+            {{ weatherData.name }}
+        </h2>
+        <div class="temp">{{ weatherData.main.temp }}°C</div>
+        <p class="desc">{{ weatherData.weather[0].description }}</p>
+      </div>
+
+        <div class="weather-right">
+            <div class="info-block">
+            <p>with real-time data and advanced technology, we provide reliable forecasts for any location around the world.</p>
+            </div>
+            <div class="cards">
+            <div class="card">
+                <div class="card-value">
+                <span class="material-icons card-icon">air</span>
+                {{ weatherData.wind.speed }} km/h
+                </div>
+                <p class="card-title">Wind</p>
+            </div>
+            <div class="card">
+                <div class="card-value">
+                <span class="material-icons card-icon">water_drop</span>
+                {{ weatherData.main.humidity }}%
+                </div>
+                <p class="card-title">Humidity</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="forecast-section" *ngIf="forecastList.length > 0">
+        <div class="forecast-cards">
+        <div class="forecast-card" 
+            *ngFor="let day of forecastList; let i = index"
+            [class.active]="day.isActive"
+            (click)="selectDay(i)">
+            <div class="forecast-day">{{ day.day }}</div>
+            <div class="forecast-temp">{{ day.temp }}°C</div>
+        </div>
+        </div>
+    </div>
+  </div>
+
+
+  <!-- LOADING STATE -->
+  <div *ngIf="state === 'loading'" class="loading">
+    <div class="spinner"></div>
+    <p>Loading weather...</p>
+  </div>
+
+</div>
