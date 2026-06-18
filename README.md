@@ -1,59 +1,32 @@
-# WeatherAppPro
+# Horizon Weather
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.14.
+Application météo responsive développée avec Angular permettant d'obtenir en temps réel les conditions météorologiques d'une ville grâce à l'intégration de l'API OpenWeather.
 
-## Development server
+## Fonctionnalités
 
-To start a local development server, run:
+- Recherche de villes
+- Affichage de la température en temps réel
+- Affichage du vent et de l'humidité
+- Gestion des états de chargement
+- Interface responsive inspirée d'une maquette Figma
+
+## Technologies
+
+- Angular 20
+- TypeScript
+- SCSS
+- Angular Material
+- OpenWeather API
+- Git / GitHub
+
+## Installation
 
 ```bash
+npm install
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Aperçu de l'application
 
-## Code scaffolding
+![Page accueil](src/assets/screenshots/weather_app.png)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![Résultat météo](src/assets//screenshots/weather_app_2.png)
