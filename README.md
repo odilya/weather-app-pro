@@ -19,14 +19,15 @@ Application météo responsive développée avec Angular permettant d'obtenir en
 - OpenWeather API
 - Git / GitHub
 
-## Installation
-
-```bash
-npm install
-ng serve
 
 ## Aperçu de l'application
 
 ![Page accueil](/screenshots/weather_app.png)
 
 ![Résultat météo](/screenshots/weather_app_2.png)
+
+## Installation
+
+```bash
+npm install
+ng serve
