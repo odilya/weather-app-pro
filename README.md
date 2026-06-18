@@ -27,6 +27,6 @@ ng serve
 
 ## Aperçu de l'application
 
-![Page accueil](src/assets/screenshots/weather_app.png)
+![Page accueil](/screenshots/weather_app.png)
 
-![Résultat météo](src/assets//screenshots/weather_app_2.png)
+![Résultat météo](/screenshots/weather_app_2.png)
